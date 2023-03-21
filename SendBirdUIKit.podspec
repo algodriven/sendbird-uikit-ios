@@ -1,5 +1,6 @@
 Pod::Spec.new do |s|
 	s.name         = "SendBirdUIKit"
+	s.module_name  = "SendbirdUIKit"
 	s.version      = "3.4.0"
 	s.summary      = "UIKit based on SendbirdChatSDK"
 	s.description  = "Sendbird UIKit is a framework composed of basic UI components based on SendbirdChatSDK."
@@ -11,10 +12,12 @@ Pod::Spec.new do |s|
 	"Tez" => "tez.park@sendbird.com"
   	}
 	s.platform     = :ios, "11.0"
-	s.source = { :git => "https://github.com/sendbird/sendbird-uikit-ios.git", :tag => "v#{s.version}" }
-	s.ios.vendored_frameworks = 'Framework/SendbirdUIKit.xcframework'
+	s.source = { :git => "https://github.com/algodriven/sendbird-uikit-ios.git", :tag => "v#{s.version}" }
+	s.source_files = 'Sources/**/*.{h,m,swift}'
+    s.resources = ['Sources/Resource/*.*', 'Sources/**/*.xib']
 	s.ios.frameworks = ["UIKit", "Foundation", "CoreData", "SendbirdChatSDK"]
 	s.requires_arc = true
 	s.dependency "SendbirdChatSDK", ">= 4.5.0"
 	s.ios.library = "icucore"
+
 end
