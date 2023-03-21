@@ -537,6 +537,10 @@ extension SBUGroupChannelModule {
                   let _ = fileMessageCell.baseFileContentView as? SBUVoiceContentView else { return }
         }
         
+        open override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+            return nil
+        }
+        
         /// Register the message cell to the table view.
         public func register(messageCell: SBUBaseMessageCell, nib: UINib? = nil) {
             if let nib = nib {
