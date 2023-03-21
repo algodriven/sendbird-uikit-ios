@@ -537,7 +537,7 @@ extension SBUGroupChannelModule {
                   let _ = fileMessageCell.baseFileContentView as? SBUVoiceContentView else { return }
         }
         
-        open override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
             return nil
         }
         
