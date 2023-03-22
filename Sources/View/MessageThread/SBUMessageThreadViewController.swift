@@ -316,7 +316,7 @@ open class SBUMessageThreadViewController: SBUBaseChannelViewController, SBUMess
     
     // MARK: - Channel title
     /// Updates channelTitle with channel and channelName
-    public override func updateChannelTitle() {
+    open override func updateChannelTitle() {
         if let titleView = self.headerComponent?.titleView as? SBUMessageThreadTitleView {
             titleView.configure(
                 channel: self.viewModel?.channel,
