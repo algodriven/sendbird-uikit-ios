@@ -13,9 +13,9 @@ Pod::Spec.new do |s|
   	}
 	s.platform     = :ios, "11.0"
 	s.source = { :git => "https://github.com/algodriven/sendbird-uikit-ios.git", :tag => "v#{s.version}" }
+	s.ios.frameworks = ["UIKit", "Foundation", "CoreData", "SendbirdChatSDK"]
 	s.source_files = 'Sources/**/*.{h,m,swift}'
     s.resources = ['Sources/Resource/*.*', 'Sources/**/*.xib']
-	s.ios.frameworks = ["UIKit", "Foundation", "CoreData", "SendbirdChatSDK"]
 	s.requires_arc = true
 	s.dependency "SendbirdChatSDK", ">= 4.5.0"
 	s.ios.library = "icucore"
