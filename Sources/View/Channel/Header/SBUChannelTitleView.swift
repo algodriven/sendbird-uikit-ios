@@ -44,9 +44,7 @@ open class SBUChannelTitleView: UIView {
     func setupViews() {
         self.coverImage.clipsToBounds = true
         self.coverImage.frame = CGRect(x: 0, y: 0, width: kCoverImageSize, height: kCoverImageSize)
-        
-        self.titleLabel.textAlignment = .left
-        
+                
         self.onlineStateIcon = UIView(frame: CGRect(x: 0, y: 0, width: 6, height: 6))
         
         self.statusField.textAlignment = .left
@@ -169,11 +167,6 @@ open class SBUChannelTitleView: UIView {
         }
         
         self.updateChannelStatus(channel: channel)
-    }
-    
-    public func configureTitleLabel(text: String, textAlignment: NSTextAlignment) {
-        titleLabel.text = text
-        titleLabel.textAlignment = textAlignment
     }
     
     func loadCoverImage() {
