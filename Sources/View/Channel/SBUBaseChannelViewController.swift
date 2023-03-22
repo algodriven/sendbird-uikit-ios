@@ -355,7 +355,7 @@ open class SBUBaseChannelViewController: SBUBaseViewController, SBUBaseChannelVi
     
     /// Updates channelTitle with channel and channelName
     /// - Since: 3.0.0
-    public func updateChannelTitle() {
+    open func updateChannelTitle() {
         if let titleView = self.baseHeaderComponent?.titleView as? SBUChannelTitleView {
             titleView.configure(
                 channel: self.baseViewModel?.channel,
