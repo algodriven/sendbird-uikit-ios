@@ -9,7 +9,7 @@
 import UIKit
 import SendbirdChatSDK
 
-class SBUChannelTitleView: UIView {
+open class SBUChannelTitleView: UIView {
     // MARK: - Public
     public var channel: BaseChannel?
     
@@ -37,7 +37,7 @@ class SBUChannelTitleView: UIView {
     }
     
     @available(*, unavailable, renamed: "SBUChannelTitleView.init(frame:)")
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
@@ -73,15 +73,15 @@ class SBUChannelTitleView: UIView {
         contentHeightConstant.priority = .defaultLow
         NSLayoutConstraint.activate([
             self.contentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            self.contentView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            self.contentView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            self.contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            self.contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
             self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
             contentHeightConstant,
         ])
         
         self.coverImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.coverImage.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 5),
+            self.coverImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 5),
             self.coverImage.widthAnchor.constraint(equalToConstant: kCoverImageSize),
             self.coverImage.heightAnchor.constraint(equalToConstant: kCoverImageSize),
             self.coverImage.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
@@ -89,16 +89,16 @@ class SBUChannelTitleView: UIView {
         
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.stackView.leftAnchor.constraint(
-                equalTo: self.coverImage.rightAnchor,
+            self.stackView.leadingAnchor.constraint(
+                equalTo: self.coverImage.trailingAnchor,
                 constant: 8
             ),
             self.stackView.heightAnchor.constraint(
                 equalTo: self.coverImage.heightAnchor,
                 multiplier: 1.0
             ),
-            self.stackView.rightAnchor.constraint(
-                equalTo: self.contentView.rightAnchor,
+            self.stackView.trailingAnchor.constraint(
+                equalTo: self.contentView.trailingAnchor,
                 constant: 5),
             self.stackView.centerYAnchor.constraint(
                 equalTo: self.centerYAnchor,
@@ -171,6 +171,11 @@ class SBUChannelTitleView: UIView {
         self.updateChannelStatus(channel: channel)
     }
     
+    public func configureTitleLabel(text: String, textAlignment: NSTextAlignment) {
+        titleLabel.text = text
+        titleLabel.textAlignment = textAlignment
+    }
+    
     func loadCoverImage() {
         guard let channel = self.channel else {
             self.coverImage.setPlaceholder(type: .iconUser, iconSize: CGSize(width: 40, height: 40))
@@ -237,7 +242,7 @@ class SBUChannelTitleView: UIView {
         return SBUStringSet.Channel_Typing(typingMembers)
     }
     
-    override var intrinsicContentSize: CGSize {
+    open override var intrinsicContentSize: CGSize {
         //NOTE: this is under assumption that this view is used in
         //navigation and / or stack view to shrink but keep max width
         return CGSize(width: 100000, height: self.frame.height)
